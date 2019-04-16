@@ -1,31 +1,22 @@
 #pragma once
-#ifndef HEROS_H
-#define HEROS_H
-#include<iostream>
-#include<string>
-#include<vector>
-#include "Entite.h"
-
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
-class Heros : Entite
+class Heros
 {
 public:
 	Heros();
-	Heros(string affichage, int positionX, int positionY);
+	Heros(string nom, int nb_vie, int jsp);
 	~Heros();
 
-	int getVie();
-	void setVie(int vie);
-
 	void deplacer();
-
+	int getVie();
+	void setVie(int nb_vie);
 	void activerPouvoir();
 
-
-
 private:
-	int m_vie;
+	int nb_vie = 3;
 };
 
-#endif
