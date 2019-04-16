@@ -1,3 +1,4 @@
+#pragma once
 #ifndef POUVOIR_H
 #define POUVOIR_H
 #include <iostream>
@@ -5,17 +6,25 @@
 #include "Entite.h"
 
 using namespace std;
-
+// enumeration
 enum Type { invincible, deplacementRapide };
 
 class Pouvoir : public Entite
 {
 public:
+
+	// Constructeurs et destructeurs
 	Pouvoir(string pouvoir);
 	Pouvoir();
 	~Pouvoir();
 
-void effet();
-};
+	// Getters et Setters
+	Type getType();
 
-#endif // !1
+	void effet();
+
+private:
+	Type m_type;
+	string m_pouvoir;
+};
+#endif

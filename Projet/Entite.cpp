@@ -9,6 +9,7 @@ Entite::Entite()
 
 Entite::Entite(string entite)
 {
+	m_affichage = entite;
 }
 
 
