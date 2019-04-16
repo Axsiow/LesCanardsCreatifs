@@ -7,7 +7,7 @@ Heros::Heros()
 }
 
 
-Heros::Heros(string nom, int nb_vie, int jsp)//lol
+Heros::Heros(string nom, int nb_vie, int jsp)
 {
 }
 
