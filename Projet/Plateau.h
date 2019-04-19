@@ -23,43 +23,43 @@ class Entite;
 class Plateau
 {
 public:
-	//constructeur
+	// Constructeur
 	Plateau();
 	Plateau(int difficulte);
-	//destructeur
+	// Destructeur
 	~Plateau();
 
-	//get et set taille
+	// Get et Set taille
 	string getTaille();
 	void setTaille();
 
-	//get set heros
+	// Get Set heros
 	Heros getHeros();
 	void setHeros(Heros heros);
 
-	//get set sortie
+	// Get Set sortie
 	Entite getSortie();
 	void setSortie(Entite sortie);
 
-	//get set monstre
+	// Get Set monstre
 	vector<Monstre*> getMonstre();
 	void setMonstre(vector<Monstre*> monstre);
 
-	//get set pouvoir
+	// Get Set pouvoir
 	vector<Pouvoir*> getPouvoir();
 	void setPouvoir(vector<Pouvoir*> pouvoir);
 
-	//get et set obstacle
+	// Get et Set obstacle
 	vector<Obstacle*> getObstacle();
 	void setObstacle(vector<Obstacle*> obstacle);
 
-	//gère les collision entre monstre héros obstacle et pouvoir
+	// Gère les collision entre monstre héros obstacle et pouvoir
 	void percute();
 
-	//afficher le plateau en début de tour
+	// Afficher le plateau en début de tour
 	void afficher();
 
-	//gère si le héros franchie la porte
+	// Gère si le héros franchie la porte
 	void porteFranchie();
 
 
