@@ -6,7 +6,8 @@
 #include "Entite.h"
 
 using namespace std;
-// enumeration
+
+	// Enumeration
 enum Type { invincible, deplacementRapide };
 
 class Pouvoir : public Entite

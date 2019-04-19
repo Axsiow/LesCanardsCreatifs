@@ -8,12 +8,12 @@ Pouvoir::Pouvoir()
 
 Pouvoir::Pouvoir(string pouvoir)
 {
-	if (pouvoir == "s")
-	{
+	if (pouvoir == "s"){	// Pouvoir de déplacement rapide 
+
 		m_type = deplacementRapide;
 	}
-	else
-	{
+	else{	// Pouvoir d'invincibilité
+
 		m_type = invincible;
 	}
 	m_pouvoir = pouvoir;
