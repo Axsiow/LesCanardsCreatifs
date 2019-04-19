@@ -21,12 +21,13 @@ public:
 	int getPositionY();
 	void setPositionY(int positionY);
 	
+	string getAffichage();
 	void affichage(int positionX, int positionY);
 	
 protected:
 	int m_positionX;
 	int m_positionY;
-	string m_entite;
+	string m_affichage;
 	
 	
 };
