@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <Windows.h>
 
 using namespace std;
 
@@ -20,12 +21,13 @@ public:
 	int getPositionY();
 	void setPositionY(int positionY);
 	
-	string getAffichage();
+	void affichage(int positionX, int positionY);
 	
 protected:
 	int m_positionX;
 	int m_positionY;
-	string m_affichage;
+	string m_entite;
+	
 	
 };
 

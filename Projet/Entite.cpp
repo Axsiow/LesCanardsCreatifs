@@ -39,6 +39,14 @@ void Entite::setPositionY(int positionY)
 
 string Entite::getAffichage()
 {
-	system("cls");
-	
+	return m_affichage;
+}
+
+void Entite::affichage(int positionX, int positionY)
+{
+	HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD C;
+	C.X = positionX;
+	C.Y = positionY;
+	SetConsoleCursorPosition(H, C);
 }
