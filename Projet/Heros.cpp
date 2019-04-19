@@ -2,23 +2,23 @@
 #include "Heros.h"
 
 
-Heros::Heros()
+Heros::Heros() //Constructeur de base
 {
 }
 
 
-Heros::Heros(string affichage, int positionX, int positionY)
+Heros::Heros(string affichage, int positionX, int positionY) //Création du héros prenant en paramètre son symbole et sa position sur les deux axes
 {
-	m_affichage = affichage;
+	m_affichage = affichage; 
 	m_positionX = positionX;
 	m_positionY = positionY;
 }
 
-Heros::~Heros()
+Heros::~Heros() //Destructeur
 {
 }
 
-void Heros::deplacer()
+void Heros::deplacer() //operateur permettant de récuperer la touche sur laquelle appui le joueur et de faire avancer le Héros en fonction de sa saisie
 {
 	switch (_getch()) {
 		case 'z':
@@ -42,16 +42,16 @@ void Heros::deplacer()
 	}
 }
 
-int Heros::getVie()
+int Heros::getVie() //Renvoie le nombre de vie du Héros
 {
 	return m_vie;
 }
 
-void Heros::setVie(int nb_vie)
+void Heros::setVie(int nb_vie) //Permet de régler le nombre de vies du Héros
 {
 	m_vie = nb_vie;
 }
 
-void Heros::activerPouvoir()
+void Heros::activerPouvoir() //En contruction : Permettera d'activer le pouvoir rammaser par le Héros
 {
 }
