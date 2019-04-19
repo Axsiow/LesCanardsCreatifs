@@ -7,9 +7,9 @@ Heros::Heros()
 }
 
 
-Heros::Heros(string affichage, int positionX, int positionY)
+Heros::Heros(string affichage, int positionX, int positionY) //test
 {
-	m_affichage = affichage;
+	m_affichage = affichage; 
 	m_positionX = positionX;
 	m_positionY = positionY;
 }
