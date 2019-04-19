@@ -5,6 +5,7 @@
 #include<string>
 #include<vector>
 #include "Entite.h"
+#include "Pouvoir.h"
 #include "conio.h"
 
 using namespace std;
