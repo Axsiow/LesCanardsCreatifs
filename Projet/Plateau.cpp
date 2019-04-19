@@ -11,16 +11,16 @@ Plateau::Plateau(int difficulte)
 	if (difficulte == 1)
 	{
 		string p = "h";
-		//constructeur heros
+		// Constructeur heros
 		m_heros = new Heros(p, 5, 5);
 
-		//constructeur pouvoir
+		// Constructeur pouvoir
 		p = "s";
 		m_pouvoir.push_back(new Pouvoir(p));
 		p = "i";
 		m_pouvoir.push_back(new Pouvoir(p));
 
-		//constructeur monstre
+		// Constructeur monstre
 
 		p = "m";
 		for (int i = 0; i < 2; i++)
@@ -28,7 +28,7 @@ Plateau::Plateau(int difficulte)
 			m_monstre.push_back(new Monstre(p));
 		}
 
-		//constructeur sortie
+		// Constructeur sortie
 		p = "e";
 		m_sortie = new Entite(p);
 
