@@ -8,7 +8,4 @@ int main()
 {
 	cout << "Le code fonctionne !" << endl;
 	Heros bob("!", 2, 2);
-	for (;;) {
-		bob.deplacer();
-	}
-
+}

@@ -9,8 +9,8 @@ Obstacle::Obstacle()
 Obstacle::Obstacle(string symbole)
 {
 	m_affichage = symbole;
-	if (m_affichage == "|") {
-		m_vertical == true;
+	if (m_affichage == "|"){
+		m_vertical = true;
 	}
 }
 
