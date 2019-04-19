@@ -9,6 +9,8 @@
 #include "Pouvoir.h"
 #include "Entite.h"
 #include "Obstacle.h"
+#include "Score.h"
+#include "Partie.h"
 
 using namespace std;
 

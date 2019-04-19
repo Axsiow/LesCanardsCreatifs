@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "Entite.h"
+#include "Heros.h"
 
 using namespace std;
 
