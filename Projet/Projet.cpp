@@ -1,7 +1,11 @@
 #include "pch.h"
 #include <iostream>
+#include "conio.h"
+#include "Heros.h"
+using namespace std;
 
 int main()
 {
-    std::cout << "Grosse truie\n"; 
+	cout << "Le code fonctionne !" << endl;
+	Heros bob("!", 2, 2);
 }

@@ -5,6 +5,8 @@
 #include<string>
 #include<vector>
 #include "Entite.h"
+#include "Pouvoir.h"
+#include "conio.h"
 
 using namespace std;
 
@@ -21,8 +23,6 @@ public:
 	void deplacer();
 
 	void activerPouvoir();
-
-
 
 private:
 	int m_vie;

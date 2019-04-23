@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
 class Score
 {
 public:
