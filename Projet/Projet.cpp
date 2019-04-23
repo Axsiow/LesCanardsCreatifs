@@ -10,7 +10,7 @@
 #include"Plateau.h"
 #include"Pouvoir.h"
 #include"Score.h"
-#include"conio.h"
+#include<conio.h>
 
 using namespace std;
 
@@ -58,7 +58,7 @@ int main()
 				{
 					cout << "|";
 				}
-				
+
 			}
 			// murs haut bas
 
@@ -72,60 +72,123 @@ int main()
 	}*/
 
 
-  /*cout<<"  _  _  _  _  _  _  _  _  _  _\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"  _  _  _  _  _  _  _  _  _  _\n";
-	*/	 
+	/*cout<<"  _  _  _  _  _  _  _  _  _  _\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "  _  _  _  _  _  _  _  _  _  _\n";
+	  */
 
 	Heros* superTheo = new Heros("H", 5, 5);
 
+	Monstre* enzo = new Monstre("M");
+
+	if (enzo->getPositionX() == superTheo->getPositionX() && enzo->getPositionY() == superTheo->getPositionY())
+	{
+		enzo->setPositionX(enzo->getPositionX() + 1);
+	}
+
+	for (;;) {
+
+		// ligne du dessus
+		for (int ligne = 0; ligne < 10; ligne++)
+		{
+			cout << "  _";
+			if (ligne == 9)
+			{
+				cout << endl;
+			}
+		}
+
+		//int�rieur du plateau
+		for (int colonneJ = 0; colonneJ < 10; colonneJ++)
+		{
+			cout << "|";
+			for (int ligneJ = 0; ligneJ < 10; ligneJ++)
+			{
+				if (ligneJ == superTheo->getPositionX() && colonneJ == superTheo->getPositionY())
+				{
+					cout << " " << superTheo->getAffichage() << " ";
+				}
+				else if (ligneJ == enzo->getPositionX() && colonneJ == enzo->getPositionY())
+				{
+					cout << " " << enzo->getAffichage() << " ";
+				}
+				else
+				{
+					cout << "   ";
+				}
+
+			}
+			cout << "|" << endl;
+		}
+
+		//ligne du bas
+		for (int ligne = 0; ligne < 10; ligne++)
+		{
+			cout << "  _";
+			if (ligne == 9)
+			{
+				cout << endl;
+			}
+		}
+
+		cout << "\nNombre de vie : " << superTheo->getVie();
+
+		//déplacement
+
+		//enrgistrement position heros
+		int xH = superTheo->getPositionX();
+		int yH = superTheo->getPositionY();
+
+		//enrgistrement position monstre
+		int xM = enzo->getPositionX();
+		int yM = enzo->getPositionY();
 
 
-  // ligne du dessus
-  for (int ligne = 0; ligne < 10; ligne++)
-  {
-	  cout << "  _";
-	  if (ligne == 9)
-	  {
-		  cout << endl;
-	  }
-  }
+		// vérif heros murs   
 
-  //int�rieur du plateau
-  for (int colonneJ = 0; colonneJ < 10; colonneJ++)
-  {
-	  cout << "|";
-	  for (int ligneJ = 0; ligneJ < 10; ligneJ++)
-	  {
-		  if (ligneJ == superTheo->getPositionX() && colonneJ== superTheo->getPositionY())
-		  {
-			  cout << " H ";
-		  }
-		  else
-		  {
-			cout<<"   ";
-		  }
-		  
-	  }
-	  cout << "|" << endl;
-  }
+		while (xH==superTheo->getPositionX() && yH==superTheo->getPositionY())
+		{
+			superTheo->deplacer();
 
-  //ligne du bas
-  for (int ligne = 0; ligne < 10; ligne++)
-  {
-	  cout << "  _";
-	  if (ligne == 9)
-	  {
-		  cout << endl;
-	  }
-  }
+			if (superTheo->getPositionX() < 0 || superTheo->getPositionX() > 9 || superTheo->getPositionY() < 0 || superTheo->getPositionY() > 9)
+			{
+				//retour du hero
+				superTheo->setPositionX(xH);
+				superTheo->setPositionY(yH);
+			}
+		}
+
+system("cls");
+
+
+		//vérif monstre murs
+
+		while (xM == enzo->getPositionX() && yM == enzo->getPositionY())
+		{
+			enzo->deplacement();
+
+			if (enzo->getPositionX() < 0  || enzo->getPositionX() > 9 || enzo->getPositionY() < 0 || enzo->getPositionY() > 9)
+			{
+				// retour du monstre
+				enzo->setPositionX(xM);
+				enzo->setPositionY(yM);
+			}
+			
+		}
+		system("cls");
+
+		if (enzo->getPositionX() == superTheo->getPositionX() && enzo->getPositionY() == superTheo->getPositionY())
+		{
+			superTheo->setVie(superTheo->getVie() - 1);
+		}
+	}
 
 }

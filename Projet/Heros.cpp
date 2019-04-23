@@ -23,11 +23,11 @@ void Heros::deplacer() //operateur permettant de r�cuperer la touche sur laque
 {
 	switch (_getch()) {
 		case 'z':
-			m_positionY++;
+			m_positionY--;
 			//cout << "haut" << endl;
 			break;
 		case 's':
-			m_positionY--;
+			m_positionY++;
 			//cout << "bas" << endl;
 			break;
 		case 'q':
