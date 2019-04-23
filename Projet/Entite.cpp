@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Entite.h"
 
-
+//constructeur et destructeurs
 Entite::Entite()
 {
 }
@@ -16,6 +16,8 @@ Entite::Entite(string entite)
 Entite::~Entite()
 {
 }
+
+// getter et setter
 
 int Entite::getPositionX()
 {
@@ -42,6 +44,7 @@ string Entite::getAffichage()
 	return m_affichage;
 }
 
+// Methode affichage (prochains cout affiche l'entité en positionX et positionY)
 void Entite::affichage(int positionX, int positionY)
 {
 	HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);

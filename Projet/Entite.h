@@ -11,10 +11,11 @@ using namespace std;
 class Entite
 {
 public:
+	// constructeur et destructeur
 	Entite();
 	Entite(string entite);
 	~Entite();
-	
+	// getters et setters
 	int getPositionX();
 	void setPositionX(int positionX);
 	
