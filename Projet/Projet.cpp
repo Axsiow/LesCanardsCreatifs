@@ -10,6 +10,7 @@
 #include"Plateau.h"
 #include"Pouvoir.h"
 #include"Score.h"
+#include<conio.h>
 
 using namespace std;
 
@@ -57,7 +58,7 @@ int main()
 				{
 					cout << "|";
 				}
-				
+
 			}
 			// murs haut bas
 
@@ -71,59 +72,74 @@ int main()
 	}*/
 
 
-  /*cout<<"  _  _  _  _  _  _  _  _  _  _\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"|                             |\n" <<
-		"  _  _  _  _  _  _  _  _  _  _\n";
-	*/	 
+	/*cout<<"  _  _  _  _  _  _  _  _  _  _\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "|                             |\n" <<
+		  "  _  _  _  _  _  _  _  _  _  _\n";
+	  */
 
 	Heros* superTheo = new Heros("H", 5, 5);
 
+	Monstre* enzo = new Monstre("M");
 
+	for (;;) {
 
-  // ligne du dessus
-  for (int ligne = 0; ligne < 10; ligne++)
-  {
-	  cout << "  _";
-	  if (ligne == 9)
-	  {
-		  cout << endl;
-	  }
-  }
+		// ligne du dessus
+		for (int ligne = 0; ligne < 10; ligne++)
+		{
+			cout << "  _";
+			if (ligne == 9)
+			{
+				cout << endl;
+			}
+		}
 
-  //int�rieur du plateau
-  for (int colonneJ = 0; colonneJ < 10; colonneJ++)
-  {
-	  cout << "|";
-	  for (int ligneJ = 0; ligneJ < 10; ligneJ++)
-	  {
-		  if (ligneJ == superTheo->getPositionX() && colonneJ== superTheo->getPositionY())
-		  {
-			  cout << " H ";
-		  }
-		  else
-		  {
-			cout<<"   ";
-		  }
-		  
-	  }
-	  cout << "|" << endl;
-  }
+		//int�rieur du plateau
+		for (int colonneJ = 0; colonneJ < 10; colonneJ++)
+		{
+			cout << "|";
+			for (int ligneJ = 0; ligneJ < 10; ligneJ++)
+			{
+				if (ligneJ == superTheo->getPositionX() && colonneJ == superTheo->getPositionY())
+				{
+					cout << " " << superTheo->getAffichage() << " ";
+				}
+				else if (ligneJ == enzo->getPositionX() && colonneJ == enzo->getPositionY())
+				{
+					cout << " " << enzo->getAffichage() << " ";
+				}
+				else
+				{
+					cout << "   ";
+				}
 
-  //ligne du bas
-  for (int ligne = 0; ligne < 10; ligne++)
-  {
-	  cout << "  _";
-	  if (ligne == 9)
-	  {
-		  cout << endl;
-	  }
-  }
+			}
+			cout << "|" << endl;
+		}
+
+		//ligne du bas
+		for (int ligne = 0; ligne < 10; ligne++)
+		{
+			cout << "  _";
+			if (ligne == 9)
+			{
+				cout << endl;
+			}
+		}
+
+		//déplacement
+
+		superTheo->deplacer();
+		enzo->deplacement();
+
+		system("cls");
+	}
+
 }
