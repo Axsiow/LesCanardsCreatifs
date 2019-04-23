@@ -2,15 +2,15 @@
 #include <iostream>
 #include <random>
 #include <time.h>
+#include <conio.h>
 #include "Entite.h"
 #include "Heros.h" 
-#include"Monstre.h"
-#include"Obstacle.h"
-#include"Partie.h"
-#include"Plateau.h"
-#include"Pouvoir.h"
-#include"Score.h"
-#include<conio.h>
+#include "Monstre.h"
+#include "Obstacle.h"
+#include "Partie.h"
+#include "Plateau.h"
+#include "Pouvoir.h"
+#include "Score.h"
 
 using namespace std;
 
