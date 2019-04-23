@@ -7,18 +7,19 @@ Heros::Heros() //Constructeur de base
 }
 
 
-Heros::Heros(string affichage, int positionX, int positionY) //Création du héros prenant en paramètre son symbole et sa position sur les deux axes
+Heros::Heros(string nom, int positionX, int positionY)//lol
 {
-	m_affichage = affichage; 
+	m_affichage = nom;
 	m_positionX = positionX;
 	m_positionY = positionY;
+	m_vie = 3;
 }
 
 Heros::~Heros() //Destructeur
 {
 }
 
-void Heros::deplacer() //operateur permettant de récuperer la touche sur laquelle appui le joueur et de faire avancer le Héros en fonction de sa saisie
+void Heros::deplacer() //operateur permettant de rï¿½cuperer la touche sur laquelle appui le joueur et de faire avancer le Hï¿½ros en fonction de sa saisie
 {
 	switch (_getch()) {
 		case 'z':
@@ -42,16 +43,16 @@ void Heros::deplacer() //operateur permettant de récuperer la touche sur laquell
 	}
 }
 
-int Heros::getVie() //Renvoie le nombre de vie du Héros
+int Heros::getVie() //Renvoie le nombre de vie du Hï¿½ros
 {
 	return m_vie;
 }
 
-void Heros::setVie(int nb_vie) //Permet de régler le nombre de vies du Héros
+void Heros::setVie(int nb_vie) //Permet de rï¿½gler le nombre de vies du Hï¿½ros
 {
 	m_vie = nb_vie;
 }
 
-void Heros::activerPouvoir() //En contruction : Permettera d'activer le pouvoir rammaser par le Héros
+void Heros::activerPouvoir() //En contruction : Permettera d'activer le pouvoir rammaser par le Hï¿½ros
 {
 }

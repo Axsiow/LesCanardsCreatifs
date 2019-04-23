@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <random>
+#include <time.h>
+
 using namespace std;
 
 #include "Entite.h"
@@ -14,6 +17,5 @@ public:
 	~Monstre();
 
 	void deplacement();
-	void monstre(string);
 };
 
