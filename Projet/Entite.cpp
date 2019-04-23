@@ -39,5 +39,5 @@ void Entite::setPositionY(int positionY)
 
 string Entite::getAffichage()
 {
-	return string();
+	return m_affichage;
 }

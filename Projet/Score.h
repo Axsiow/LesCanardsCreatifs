@@ -15,17 +15,20 @@ public:
 	~Score();
 
 	// Getter
-	int nbDeplacement();
-	int nbPouvoirRamasse();
-	int calculeScore();
+	int getNbDeplacement();
+	int getNbPouvoirRamasse();
+	
 	// Setter
-
+	void setNbDeplacement(int nbDeplacment);
+	void setNbPouvoir(int nbPouvoir);
+	
+	
+	int calculeScore();
 private:
 
 	// m_
 	int m_nbDeplacement;
 	int m_nbPouvoirRamasse;
-	int m_calculeScore;
 };
 
 #endif // !SCORE_H 

@@ -34,16 +34,6 @@ Plateau::Plateau(int difficulte)
 
 		m_taille = 10;
 	}
-	else if (difficulte == 2)
-	{
-
-	}
-	else
-	{
-
-	}
-
-
 }
 
 
@@ -116,9 +106,43 @@ void Plateau::percute()
 {
 }
 
+
+
 void Plateau::afficher()
 {
+	// ligne du dessus
+	for (int ligne = 0; ligne < 10; ligne++)
+	{
+		cout << "  _";
+		if (ligne == 9)
+		{
+			cout << endl;
+		}
+	}
+
+	//intérieur du plateau
+	for (int colonneJ = 0; colonneJ < 10; colonneJ++)
+	{
+		cout << "|";
+		for (int ligneJ = 0; ligneJ < 10; ligneJ++)
+		{
+			cout << "   ";
+		}
+		cout << "|" << endl;
+	}
+
+	//ligne du bas
+	for (int ligne = 0; ligne < 10; ligne++)
+	{
+		cout << "  _";
+		if (ligne == 9)
+		{
+			cout << endl;
+		}
+	}
 }
+
+
 
 void Plateau::porteFranchie()
 {

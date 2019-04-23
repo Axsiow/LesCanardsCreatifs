@@ -7,8 +7,12 @@ Heros::Heros()
 }
 
 
-Heros::Heros(string nom, int nb_vie, int jsp)//lol
+Heros::Heros(string nom, int positionX, int positionY)//lol
 {
+	m_affichage = nom;
+	m_positionX = positionX;
+	m_positionY = positionY;
+	m_vie = 3;
 }
 
 Heros::~Heros()

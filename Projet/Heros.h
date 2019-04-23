@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Heros : Entite
+class Heros : public Entite
 {
 public:
 	Heros();
