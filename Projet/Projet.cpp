@@ -10,6 +10,7 @@
 #include"Plateau.h"
 #include"Pouvoir.h"
 #include"Score.h"
+#include"conio.h"
 
 using namespace std;
 
@@ -126,4 +127,5 @@ int main()
 		  cout << endl;
 	  }
   }
+
 }
