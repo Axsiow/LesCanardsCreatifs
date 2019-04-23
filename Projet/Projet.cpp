@@ -1,3 +1,5 @@
+//Première version en cours de développement.
+
 #include "pch.h"
 #include <iostream>
 #include <random>
