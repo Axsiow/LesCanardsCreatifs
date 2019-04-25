@@ -76,6 +76,25 @@ Plateau::Plateau(int difficulte)
 		m_sortie->setPositionX(distrib(re));
 		m_sortie->setPositionY(distrib(re));
 
+		if (m_sortie->getPositionX() < 6)
+		{
+			m_sortie->setPositionX(m_sortie->getPositionX() + 2);
+		}
+		else
+		{
+			m_sortie->setPositionX(m_sortie->getPositionX() - 2);
+		}
+
+		if (m_sortie->getPositionY() < 6)
+		{
+			m_sortie->setPositionY(m_sortie->getPositionY() + 2);
+		}
+		else
+		{
+			m_sortie->setPositionY(m_sortie->getPositionY() - 2);
+		}
+
+
 		m_taille = 10;
 
 		for (int i = 0; i < 2; i++)
@@ -320,12 +339,17 @@ void Plateau::afficher()
 							rien++;
 						}
 					}
-					if (rien == 2+nbMonstre)
+					if (ligneJ == m_sortie->getPositionX() && colonneJ == m_sortie->getPositionY())
+					{
+						cout << " " << m_sortie->getAffichage() << " ";
+					}
+					else if (rien == 2+nbMonstre)
 					{
 						cout << "   ";
 					}
 
 				}
+				
 
 				
 		}
