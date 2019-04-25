@@ -20,6 +20,24 @@ Plateau::Plateau(int difficulte)
 		p = "I";
 		m_pouvoir.push_back(new Pouvoir(p));
 
+		if (m_pouvoir[1]->getPositionX() < 6)
+		{
+			m_pouvoir[1]->setPositionX(m_pouvoir[1]->getPositionX()+3);
+		}
+		else
+		{
+			m_pouvoir[1]->setPositionX(m_pouvoir[1]->getPositionX() - 3);
+		}
+
+		if (m_pouvoir[1]->getPositionY() < 6)
+		{
+			m_pouvoir[1]->setPositionY(m_pouvoir[1]->getPositionY() + 3);
+		}
+		else
+		{
+			m_pouvoir[1]->setPositionY(m_pouvoir[1]->getPositionY() - 3);
+		}
+
 		// Constructeur monstre
 
 		p = "M";
@@ -30,20 +48,20 @@ Plateau::Plateau(int difficulte)
 
 		if (m_monstre[1]->getPositionX() < 6)
 		{
-			m_monstre[1]->setPositionX(m_monstre[1]->getPositionX() + 5);
+			m_monstre[1]->setPositionX(m_monstre[1]->getPositionX() + 4);
 		}
 		else
 		{
-			m_monstre[1]->setPositionX(m_monstre[1]->getPositionX() - 5);
+			m_monstre[1]->setPositionX(m_monstre[1]->getPositionX() - 4);
 		}
 
 		if (m_monstre[1]->getPositionY() < 6)
 		{
-			m_monstre[1]->setPositionY(m_monstre[1]->getPositionY() + 5);
+			m_monstre[1]->setPositionY(m_monstre[1]->getPositionY() + 4);
 		}
 		else
 		{
-			m_monstre[1]->setPositionY(m_monstre[1]->getPositionY() - 5);
+			m_monstre[1]->setPositionY(m_monstre[1]->getPositionY() - 4);
 		}
 		
 		
@@ -274,21 +292,23 @@ void Plateau::afficher()
 				{
 					cout << " " << m_heros->getAffichage() << " ";
 				}	
-			
-				else if (ligneJ == m_pouvoir[0]->getPositionX() && colonneJ == m_pouvoir[0]->getPositionY())
-				{
-					cout << " " << m_pouvoir[0]->getAffichage() << " ";
-				}
-
-				else if (ligneJ == m_pouvoir[1]->getPositionX() && colonneJ == m_pouvoir[1]->getPositionY())
-				{
-					cout << " " << m_pouvoir[1]->getAffichage() << " ";
-				}
-
 
 				else
 				{
 					int rien = 0;
+					for (int i = 0; i < 2; i++)
+					{
+						if (ligneJ == m_pouvoir[i]->getPositionX() && colonneJ == m_pouvoir[i]->getPositionY())
+						{
+							cout << " " << m_pouvoir[i]->getAffichage() << " ";
+						}
+						else
+						{
+							rien++;
+						}
+					}
+
+			
 					for (int i = 0; i < nbMonstre; i++)
 					{
 						if (ligneJ == m_monstre[i]->getPositionX() && colonneJ == m_monstre[i]->getPositionY())
@@ -300,7 +320,7 @@ void Plateau::afficher()
 							rien++;
 						}
 					}
-					if (rien == 2)
+					if (rien == 2+nbMonstre)
 					{
 						cout << "   ";
 					}
