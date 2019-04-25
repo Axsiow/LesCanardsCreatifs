@@ -53,12 +53,18 @@ void Heros::setVie(int nb_vie) //Permet de r�gler le nombre de vies du H�ros
 	m_vie = nb_vie;
 }
 
+vector<Pouvoir*> Heros::getPouvoir()
+{
+	return m_pouvoir;
+}
+
+void Heros::setPouvoir(vector<Pouvoir*> pouvoir)
+{
+	m_pouvoir = pouvoir;
+}
+
 void Heros::activerPouvoir() //En contruction : Permettera d'activer le pouvoir rammaser par le H�ros
 {
-	for (int i = 0; i < 2; i++)
-	{
-		if (m_pouvoir[i]->getAffichage()=="S")
-		{
 			switch (_getch()) {
 			case 'z':
 				m_positionY=m_positionY-2;
@@ -79,7 +85,5 @@ void Heros::activerPouvoir() //En contruction : Permettera d'activer le pouvoir 
 			default:
 				break;
 			}
-		}
-	}
-	
 }
+	

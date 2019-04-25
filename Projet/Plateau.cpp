@@ -193,7 +193,7 @@ void Plateau::setObstacle(vector<Obstacle*> obstacle)
 	m_obstacle == obstacle;
 }
 
-void Plateau::percute()
+void Plateau::percute(string pouvoir)
 {
 	//enrgistrement position heros
 	int xH = m_heros->getPositionX();
@@ -219,11 +219,25 @@ void Plateau::percute()
 	}
 
 
+	
+	
+
+
+
 	// vérif heros murs   
 	
 	while (xH == m_heros->getPositionX() && yH == m_heros->getPositionY())
 	{
-		m_heros->deplacer();
+
+		if (pouvoir == "S")
+		{
+			m_heros->activerPouvoir();
+		}
+		else
+		{
+			m_heros->deplacer();
+		}
+		
 		cout << "Deplacement impossible, recommencer.";
 		if (m_heros->getPositionX() < 0 || m_heros->getPositionX() > 9 || m_heros->getPositionY() < 0 || m_heros->getPositionY() > 9)
 		{
@@ -231,6 +245,7 @@ void Plateau::percute()
 			m_heros->setPositionX(xH);
 			m_heros->setPositionY(yH);
 		}
+
 		system("cls");
 	}
 
@@ -262,17 +277,24 @@ void Plateau::percute()
 
 	//colision monstre et heros
 
-	for (int i = 0; i < nbMonstre; i++)
+
+	if (pouvoir != "I")
 	{
-		if (m_monstre[i]->getPositionX() == m_heros->getPositionX() && m_monstre[i]->getPositionY() == m_heros->getPositionY())
+		for (int i = 0; i < nbMonstre; i++)
 		{
-			m_heros->setVie(m_heros->getVie() - 1);
-		}
-		if (xH == m_monstre[i]->getPositionX() && yH == m_monstre[i]->getPositionY())
-		{
-			m_heros->setVie(m_heros->getVie() - 1);
+			if (m_monstre[i]->getPositionX() == m_heros->getPositionX() && m_monstre[i]->getPositionY() == m_heros->getPositionY())
+			{
+				m_heros->setVie(m_heros->getVie() - 1);
+			}
+			if (xH == m_monstre[i]->getPositionX() && yH == m_monstre[i]->getPositionY())
+			{
+				m_heros->setVie(m_heros->getVie() - 1);
+			}
 		}
 	}
+	
+
+
 	
 }
 
@@ -371,8 +393,10 @@ void Plateau::afficher()
 
 
 
-void Plateau::porteFranchie()
+bool Plateau::porteFranchie()
 {
+	return (m_heros->getPositionX() == m_sortie->getPositionX() && m_heros->getPositionY() == m_sortie->getPositionY()) ? true : false;
+
 }
 
 
