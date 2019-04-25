@@ -247,7 +247,7 @@ while (plateau->getHeros()->getVie()>0 && gagne != true)
 		{
 			compteurPouvoir = 3;
 			pouvoirRamasse = plateau->getPouvoir()[i]->getAffichage();
-			plateau->getPouvoir()[i]->~Pouvoir();
+			plateau->getPouvoir()[i]->setAffichage(" ");
 		}
 	}
 

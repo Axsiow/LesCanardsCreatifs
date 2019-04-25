@@ -22,7 +22,7 @@ public:
 	void setPositionY(int positionY);
 	
 	string getAffichage();
-	void affichage(int positionX, int positionY);
+	void setAffichage(string affichage);
 	
 protected:
 	int m_positionX;
