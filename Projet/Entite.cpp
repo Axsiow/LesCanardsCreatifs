@@ -42,11 +42,7 @@ string Entite::getAffichage()
 	return m_affichage;
 }
 
-void Entite::affichage(int positionX, int positionY)
+void Entite::setAffichage(string affichage)
 {
-	HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD C;
-	C.X = positionX;
-	C.Y = positionY;
-	SetConsoleCursorPosition(H, C);
+	m_affichage = affichage;
 }
