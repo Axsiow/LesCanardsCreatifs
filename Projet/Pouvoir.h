@@ -3,6 +3,8 @@
 #define POUVOIR_H
 #include <iostream>
 #include <vector>
+#include <random>
+#include <time.h>
 #include "Entite.h"
 #include "Heros.h"
 
@@ -23,10 +25,7 @@ public:
 	// Getters et Setters
 	Type getType();
 
-	void effet();
-
 private:
 	Type m_type;
-	string m_pouvoir;
 };
 #endif

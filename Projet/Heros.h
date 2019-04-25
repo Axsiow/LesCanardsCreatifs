@@ -10,6 +10,8 @@
 
 using namespace std;
 
+class Pouvoir;
+
 class Heros : public Entite
 {
 public:
@@ -25,6 +27,7 @@ public:
 	void activerPouvoir();
 
 private:
+	vector<Pouvoir*> m_pouvoir;
 	int m_vie;
 };
 

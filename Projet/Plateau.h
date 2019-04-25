@@ -30,16 +30,16 @@ public:
 	~Plateau();
 
 	// Get et Set taille
-	string getTaille();
-	void setTaille();
+	int getTaille();
+	void setTaille(int taille);
 
 	// Get Set heros
-	Heros getHeros();
-	void setHeros(Heros heros);
+	Heros* getHeros();
+	void setHeros(Heros* heros);
 
 	// Get Set sortie
-	Entite getSortie();
-	void setSortie(Entite sortie);
+	Entite* getSortie();
+	void setSortie(Entite* sortie);
 
 	// Get Set monstre
 	vector<Monstre*> getMonstre();
@@ -65,7 +65,7 @@ public:
 
 private:
 
-	string m_taille;
+	int m_taille;
 	Heros* m_heros;
 	Entite* m_sortie;
 	vector<Monstre*> m_monstre;
