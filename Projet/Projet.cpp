@@ -1,4 +1,12 @@
-//Première version en cours de développement.
+//Seconde version. A moitié fonctionnel 
+/*
+	+ Le plateau s'affiche
+	+ Le heros peut se deplacer
+	+ Les monstres fonctionnent
+	+ La sortie est opperationelle 
+
+	/!\ Probleme au niveau de l'affichage : Mauvaise optimisation du code, A REGLER AVANT 15H /!\
+*/
 
 #include "pch.h"
 #include <iostream>
