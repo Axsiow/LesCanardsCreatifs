@@ -54,13 +54,13 @@ public:
 	void setObstacle(vector<Obstacle*> obstacle);
 
 	// Gère les collision entre monstre héros obstacle et pouvoir
-	void percute();
+	void percute(string pouvoir);
 
 	// Afficher le plateau en début de tour
 	void afficher();
 
 	// Gère si le héros franchie la porte
-	void porteFranchie();
+	bool porteFranchie();
 
 
 private:

@@ -22,6 +22,10 @@ public:
 	int getVie();
 	void setVie(int vie);
 
+	vector<Pouvoir*> getPouvoir();
+
+	void setPouvoir(vector<Pouvoir*> pouvoir);
+
 	void deplacer();
 
 	void activerPouvoir();

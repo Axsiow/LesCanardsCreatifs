@@ -20,6 +20,24 @@ Plateau::Plateau(int difficulte)
 		p = "I";
 		m_pouvoir.push_back(new Pouvoir(p));
 
+		if (m_pouvoir[1]->getPositionX() < 6)
+		{
+			m_pouvoir[1]->setPositionX(m_pouvoir[1]->getPositionX()+3);
+		}
+		else
+		{
+			m_pouvoir[1]->setPositionX(m_pouvoir[1]->getPositionX() - 3);
+		}
+
+		if (m_pouvoir[1]->getPositionY() < 6)
+		{
+			m_pouvoir[1]->setPositionY(m_pouvoir[1]->getPositionY() + 3);
+		}
+		else
+		{
+			m_pouvoir[1]->setPositionY(m_pouvoir[1]->getPositionY() - 3);
+		}
+
 		// Constructeur monstre
 
 		p = "M";
@@ -30,20 +48,20 @@ Plateau::Plateau(int difficulte)
 
 		if (m_monstre[1]->getPositionX() < 6)
 		{
-			m_monstre[1]->setPositionX(m_monstre[1]->getPositionX() + 5);
+			m_monstre[1]->setPositionX(m_monstre[1]->getPositionX() + 4);
 		}
 		else
 		{
-			m_monstre[1]->setPositionX(m_monstre[1]->getPositionX() - 5);
+			m_monstre[1]->setPositionX(m_monstre[1]->getPositionX() - 4);
 		}
 
 		if (m_monstre[1]->getPositionY() < 6)
 		{
-			m_monstre[1]->setPositionY(m_monstre[1]->getPositionY() + 5);
+			m_monstre[1]->setPositionY(m_monstre[1]->getPositionY() + 4);
 		}
 		else
 		{
-			m_monstre[1]->setPositionY(m_monstre[1]->getPositionY() - 5);
+			m_monstre[1]->setPositionY(m_monstre[1]->getPositionY() - 4);
 		}
 		
 		
@@ -57,6 +75,25 @@ Plateau::Plateau(int difficulte)
 
 		m_sortie->setPositionX(distrib(re));
 		m_sortie->setPositionY(distrib(re));
+
+		if (m_sortie->getPositionX() < 6)
+		{
+			m_sortie->setPositionX(m_sortie->getPositionX() + 2);
+		}
+		else
+		{
+			m_sortie->setPositionX(m_sortie->getPositionX() - 2);
+		}
+
+		if (m_sortie->getPositionY() < 6)
+		{
+			m_sortie->setPositionY(m_sortie->getPositionY() + 2);
+		}
+		else
+		{
+			m_sortie->setPositionY(m_sortie->getPositionY() - 2);
+		}
+
 
 		m_taille = 10;
 
@@ -156,7 +193,7 @@ void Plateau::setObstacle(vector<Obstacle*> obstacle)
 	m_obstacle == obstacle;
 }
 
-void Plateau::percute()
+void Plateau::percute(string pouvoir)
 {
 	//enrgistrement position heros
 	int xH = m_heros->getPositionX();
@@ -182,11 +219,25 @@ void Plateau::percute()
 	}
 
 
+	
+	
+
+
+
 	// vérif heros murs   
 	
 	while (xH == m_heros->getPositionX() && yH == m_heros->getPositionY())
 	{
-		m_heros->deplacer();
+
+		if (pouvoir == "S")
+		{
+			m_heros->activerPouvoir();
+		}
+		else
+		{
+			m_heros->deplacer();
+		}
+		
 		cout << "Deplacement impossible, recommencer.";
 		if (m_heros->getPositionX() < 0 || m_heros->getPositionX() > 9 || m_heros->getPositionY() < 0 || m_heros->getPositionY() > 9)
 		{
@@ -194,6 +245,7 @@ void Plateau::percute()
 			m_heros->setPositionX(xH);
 			m_heros->setPositionY(yH);
 		}
+
 		system("cls");
 	}
 
@@ -225,17 +277,24 @@ void Plateau::percute()
 
 	//colision monstre et heros
 
-	for (int i = 0; i < nbMonstre; i++)
+
+	if (pouvoir != "I")
 	{
-		if (m_monstre[i]->getPositionX() == m_heros->getPositionX() && m_monstre[i]->getPositionY() == m_heros->getPositionY())
+		for (int i = 0; i < nbMonstre; i++)
 		{
-			m_heros->setVie(m_heros->getVie() - 1);
-		}
-		if (xH == m_monstre[i]->getPositionX() && yH == m_monstre[i]->getPositionY())
-		{
-			m_heros->setVie(m_heros->getVie() - 1);
+			if (m_monstre[i]->getPositionX() == m_heros->getPositionX() && m_monstre[i]->getPositionY() == m_heros->getPositionY())
+			{
+				m_heros->setVie(m_heros->getVie() - 1);
+			}
+			if (xH == m_monstre[i]->getPositionX() && yH == m_monstre[i]->getPositionY())
+			{
+				m_heros->setVie(m_heros->getVie() - 1);
+			}
 		}
 	}
+	
+
+
 	
 }
 
@@ -274,21 +333,23 @@ void Plateau::afficher()
 				{
 					cout << " " << m_heros->getAffichage() << " ";
 				}	
-			
-				else if (ligneJ == m_pouvoir[0]->getPositionX() && colonneJ == m_pouvoir[0]->getPositionY())
-				{
-					cout << " " << m_pouvoir[0]->getAffichage() << " ";
-				}
-
-				else if (ligneJ == m_pouvoir[1]->getPositionX() && colonneJ == m_pouvoir[1]->getPositionY())
-				{
-					cout << " " << m_pouvoir[1]->getAffichage() << " ";
-				}
-
 
 				else
 				{
 					int rien = 0;
+					for (int i = 0; i < 2; i++)
+					{
+						if (ligneJ == m_pouvoir[i]->getPositionX() && colonneJ == m_pouvoir[i]->getPositionY())
+						{
+							cout << " " << m_pouvoir[i]->getAffichage() << " ";
+						}
+						else
+						{
+							rien++;
+						}
+					}
+
+			
 					for (int i = 0; i < nbMonstre; i++)
 					{
 						if (ligneJ == m_monstre[i]->getPositionX() && colonneJ == m_monstre[i]->getPositionY())
@@ -300,12 +361,17 @@ void Plateau::afficher()
 							rien++;
 						}
 					}
-					if (rien == 2)
+					if (ligneJ == m_sortie->getPositionX() && colonneJ == m_sortie->getPositionY())
+					{
+						cout << " " << m_sortie->getAffichage() << " ";
+					}
+					else if (rien == 2+nbMonstre)
 					{
 						cout << "   ";
 					}
 
 				}
+				
 
 				
 		}
@@ -327,8 +393,10 @@ void Plateau::afficher()
 
 
 
-void Plateau::porteFranchie()
+bool Plateau::porteFranchie()
 {
+	return (m_heros->getPositionX() == m_sortie->getPositionX() && m_heros->getPositionY() == m_sortie->getPositionY()) ? true : false;
+
 }
 
 

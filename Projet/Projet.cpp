@@ -217,12 +217,42 @@ system("cls");
 
 Plateau* plateau = new Plateau(1);
 
+bool gagne = false;
 
-while (plateau->getHeros()->getVie()>0)
+int compteurPouvoir = 0;
+
+string pouvoirRamasse = "rien";
+
+
+
+while (plateau->getHeros()->getVie()>0 && gagne != true)
 {
 	plateau->afficher();
 
-	plateau->percute();
+
+	if (compteurPouvoir < 0)
+	{
+		compteurPouvoir--;
+	}
+	else
+	{
+		pouvoirRamasse = "rien";
+	}
+	
+	plateau->percute(pouvoirRamasse);
+
+	for (int i = 0; i < 2; i++)
+	{
+		if (plateau->getHeros()->getPositionX() == plateau->getPouvoir()[i]->getPositionX() && plateau->getHeros()->getPositionY() == plateau->getPouvoir()[i]->getPositionY())
+		{
+			compteurPouvoir = 3;
+			pouvoirRamasse = plateau->getPouvoir()[i]->getAffichage();
+			plateau->getPouvoir()[i]->~Pouvoir();
+		}
+	}
+
+
+	gagne = plateau->porteFranchie();
 
 }
 cout << "Game Over";
