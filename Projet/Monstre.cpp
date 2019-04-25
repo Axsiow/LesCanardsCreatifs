@@ -9,9 +9,13 @@ Monstre::Monstre()
 Monstre::Monstre(string symbole)
 {
 	m_affichage = symbole;
-	srand(time(NULL));
-	m_positionX= rand() % (11);
-	m_positionY= rand() % (11);
+	default_random_engine re(time(0));
+	uniform_int_distribution<int> distrib{ 0,10 };
+	
+	m_positionX = distrib(re);
+	m_positionY = distrib(re);
+
+	
 
 }
 
@@ -22,8 +26,13 @@ Monstre::~Monstre()
 
 void Monstre::deplacement()
 {
-	srand(time(NULL));
-	int direction = rand() % (4);
+	
+	
+		default_random_engine re(time(0));
+	uniform_int_distribution<int> distrib{ 0,10 };
+
+	int direction = distrib(re);
+
 	if (direction == 0)
 	{
 		m_positionY = m_positionY + 1;

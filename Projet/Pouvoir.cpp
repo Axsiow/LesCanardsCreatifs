@@ -8,7 +8,7 @@ Pouvoir::Pouvoir()
 
 Pouvoir::Pouvoir(string pouvoir)
 {
-	if (pouvoir == "s"){	// Pouvoir de déplacement rapide 
+	if (pouvoir == "S"){	// Pouvoir de déplacement rapide 
 
 		m_type = deplacementRapide;
 	}
@@ -16,7 +16,14 @@ Pouvoir::Pouvoir(string pouvoir)
 
 		m_type = invincible;
 	}
-	m_pouvoir = pouvoir;
+	m_affichage = pouvoir;
+
+	default_random_engine re(time(0));
+	uniform_int_distribution<int> distrib{ 0,10 };
+
+	m_positionX = distrib(re);
+	m_positionY = distrib(re);
+
 }
 
 Pouvoir::~Pouvoir()
@@ -28,6 +35,3 @@ Type Pouvoir::getType()
 	return m_type;
 }
 
-void Pouvoir::effet()
-{
-}

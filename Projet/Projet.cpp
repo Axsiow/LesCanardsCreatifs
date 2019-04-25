@@ -2,15 +2,15 @@
 #include <iostream>
 #include <random>
 #include <time.h>
+#include <conio.h>
 #include "Entite.h"
 #include "Heros.h" 
-#include"Monstre.h"
-#include"Obstacle.h"
-#include"Partie.h"
-#include"Plateau.h"
-#include"Pouvoir.h"
-#include"Score.h"
-#include<conio.h>
+#include "Monstre.h"
+#include "Obstacle.h"
+#include "Partie.h"
+#include "Plateau.h"
+#include "Pouvoir.h"
+#include "Score.h"
 
 using namespace std;
 
@@ -85,16 +85,26 @@ int main()
 		  "  _  _  _  _  _  _  _  _  _  _\n";
 	  */
 
+	
+	
+	/*
+	
 	Heros* superTheo = new Heros("H", 5, 5);
 
 	Monstre* enzo = new Monstre("M");
+
+	Pouvoir* invincible = new Pouvoir("I");
 
 	if (enzo->getPositionX() == superTheo->getPositionX() && enzo->getPositionY() == superTheo->getPositionY())
 	{
 		enzo->setPositionX(enzo->getPositionX() + 1);
 	}
+	if (invincible->getPositionX() == superTheo->getPositionX() && invincible->getPositionY() == superTheo->getPositionY())
+	{
+		invincible->setPositionX(invincible->getPositionX() + 1);
+	}
 
-	for (;;) {
+	while (superTheo->getVie()>0) {
 
 		// ligne du dessus
 		for (int ligne = 0; ligne < 10; ligne++)
@@ -119,6 +129,10 @@ int main()
 				else if (ligneJ == enzo->getPositionX() && colonneJ == enzo->getPositionY())
 				{
 					cout << " " << enzo->getAffichage() << " ";
+				}
+				else if (ligneJ == invincible->getPositionX() && colonneJ == invincible->getPositionY())
+				{
+					cout << " " << invincible->getAffichage() << " ";
 				}
 				else
 				{
@@ -185,10 +199,35 @@ system("cls");
 		}
 		system("cls");
 
+
+		//colision monstre et heros
 		if (enzo->getPositionX() == superTheo->getPositionX() && enzo->getPositionY() == superTheo->getPositionY())
+		{
+			superTheo->setVie(superTheo->getVie() - 1);
+		}
+		if (xH == enzo->getPositionX() && yH == enzo->getPositionY())
 		{
 			superTheo->setVie(superTheo->getVie() - 1);
 		}
 	}
 
-} //a
+	cout << "Game Over";
+	*/
+	
+
+Plateau* plateau = new Plateau(1);
+
+
+while (plateau->getHeros()->getVie()>0)
+{
+	plateau->afficher();
+
+	plateau->percute();
+
+}
+cout << "Game Over";
+
+
+
+
+}
