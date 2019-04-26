@@ -339,39 +339,38 @@ void Plateau::afficher()
 				{
 					cout << " " << m_heros->getAffichage() << " ";
 				}	
+				else if (ligneJ == m_sortie->getPositionX() && colonneJ == m_sortie->getPositionY())
+				{
+					cout << " " << m_sortie->getAffichage() << " ";
+				}
 
 				else
 				{
-					int rien = 0;
+					bool rienP = false;
 					for (int i = 0; i < 2; i++)
 					{
 						if (ligneJ == m_pouvoir[i]->getPositionX() && colonneJ == m_pouvoir[i]->getPositionY())
 						{
 							cout << " " << m_pouvoir[i]->getAffichage() << " ";
-						}
-						else
-						{
-							rien++;
+							rienP = true;
 						}
 					}
 
-			
-					for (int i = 0; i < nbMonstre; i++)
+					bool rienM = false;
+					if (rienP == false)
 					{
-						if (ligneJ == m_monstre[i]->getPositionX() && colonneJ == m_monstre[i]->getPositionY())
+						for (int i = 0; i < nbMonstre; i++)
 						{
-							cout << " "<< m_monstre[i]->getAffichage() <<" ";
-						}
-						else
-						{
-							rien++;
+							if (ligneJ == m_monstre[i]->getPositionX() && colonneJ == m_monstre[i]->getPositionY())
+							{
+								cout << " "<< m_monstre[i]->getAffichage() <<" ";
+								rienM = true;
+							}
 						}
 					}
-					if (ligneJ == m_sortie->getPositionX() && colonneJ == m_sortie->getPositionY())
-					{
-						cout << " " << m_sortie->getAffichage() << " ";
-					}
-					else if (rien == 2+nbMonstre)
+					
+					
+					if (rienP == false && rienM == false)
 					{
 						cout << "   ";
 					}
