@@ -63,7 +63,7 @@ void Heros::setPouvoir(vector<Pouvoir*> pouvoir)
 	m_pouvoir = pouvoir;
 }
 
-void Heros::activerPouvoir() //En contruction : Permettera d'activer le pouvoir rammaser par le H�ros
+void Heros::activerPouvoir() //En contruction : Permettera d'activer le pouvoir rammaser par le Heros
 {
 			switch (_getch()) {
 			case 'z':

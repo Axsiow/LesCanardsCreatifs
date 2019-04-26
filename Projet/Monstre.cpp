@@ -26,10 +26,8 @@ Monstre::~Monstre()
 
 void Monstre::deplacement()
 {
-	
-	
-		default_random_engine re(time(0));
-	uniform_int_distribution<int> distrib{ 0,10 };
+	default_random_engine re(time(0));
+	uniform_int_distribution<int> distrib{ 0,3 };
 
 	int direction = distrib(re);
 

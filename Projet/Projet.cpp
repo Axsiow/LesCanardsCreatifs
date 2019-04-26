@@ -223,12 +223,17 @@ int compteurPouvoir = 0;
 
 string pouvoirRamasse = "rien";
 
+Score* score = new Score();
 
+score->setNbDeplacement(0);
+score->setNbPouvoir(0);
 
 while (plateau->getHeros()->getVie()>0 && gagne != true)
 {
+	score->setNbDeplacement(score->getNbDeplacement() + 1);
+		
 	plateau->afficher();
-
+	cout << endl << "Score : " << score->calculeScore() << endl;
 
 	if (compteurPouvoir < 0)
 	{
@@ -238,7 +243,7 @@ while (plateau->getHeros()->getVie()>0 && gagne != true)
 	{
 		pouvoirRamasse = "rien";
 	}
-	
+
 	plateau->percute(pouvoirRamasse);
 
 	for (int i = 0; i < 2; i++)
@@ -248,14 +253,23 @@ while (plateau->getHeros()->getVie()>0 && gagne != true)
 			compteurPouvoir = 3;
 			pouvoirRamasse = plateau->getPouvoir()[i]->getAffichage();
 			plateau->getPouvoir()[i]->setAffichage(" ");
+			score->setNbPouvoir(score->getNbPouvoirRamasse() + 1);
 		}
 	}
 
 
 	gagne = plateau->porteFranchie();
 
+
+
 }
-cout << "Game Over";
+	if (gagne == true) {
+		cout << "Vous avez gagne !" << endl;
+	}
+	else {
+		cout << "Vous avez perdu !" << endl;
+	}
+	cout << "Score : " <<score->calculeScore();
 
 
 
