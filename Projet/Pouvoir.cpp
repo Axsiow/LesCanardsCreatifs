@@ -19,7 +19,7 @@ Pouvoir::Pouvoir(string pouvoir)
 	m_affichage = pouvoir;
 
 	default_random_engine re(time(0));
-	uniform_int_distribution<int> distrib{ 0,10 };
+	uniform_int_distribution<int> distrib{ 0,9 };
 
 	m_positionX = distrib(re);
 	m_positionY = distrib(re);
