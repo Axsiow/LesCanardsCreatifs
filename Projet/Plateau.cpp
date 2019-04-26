@@ -38,6 +38,9 @@ Plateau::Plateau(int difficulte)
 			m_pouvoir[1]->setPositionY(m_pouvoir[1]->getPositionY() - 3);
 		}
 
+		int a = m_pouvoir[1]->getPositionX();
+		int b = m_pouvoir[1]->getPositionY();
+
 		// Constructeur monstre
 
 		p = "M";
@@ -195,6 +198,7 @@ void Plateau::setObstacle(vector<Obstacle*> obstacle)
 
 void Plateau::percute(string pouvoir)
 {
+
 	//enrgistrement position heros
 	int xH = m_heros->getPositionX();
 	int yH = m_heros->getPositionY();
