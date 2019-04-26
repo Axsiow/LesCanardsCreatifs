@@ -1,9 +1,13 @@
-//Seconde version. A moitié fonctionnel 
+//V.1 Version fonctionelle 
 /*
 	+ Le plateau s'affiche
 	+ Le heros peut se deplacer
 	+ Les monstres fonctionnent
 	+ La sortie est opperationelle 
+	+ Score fonctionnel
+	+ Pouvoirs fonctionnels 
+
+	++ Le jeu fonctionne !
 
 	/!\ Probleme au niveau de l'affichage : Mauvaise optimisation du code, A REGLER AVANT 15H /!\
 */
