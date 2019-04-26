@@ -26,6 +26,81 @@ using namespace std;
 
 int main()
 {
+
+Plateau* plateau = new Plateau(1);
+
+bool gagne = false;
+
+int compteurPouvoir = 0;
+
+string pouvoirRamasse = "rien";
+
+Score* score = new Score();
+
+score->setNbDeplacement(0);
+score->setNbPouvoir(0);
+cout << "------------------------------" << endl;
+cout << "Hero and monsters" << endl << "Fait par LesCanardsCreatifs";
+cout << endl << "------------------------------" << endl << endl;
+cout << "Pour commencer la partie, appuyez sur la touche 'z' !" << endl;
+while (_getch() != 'z') {
+
+}
+
+system("cls");
+
+while (plateau->getHeros()->getVie()>0 && gagne != true)
+{
+	score->setNbDeplacement(score->getNbDeplacement() + 1);
+		
+	plateau->afficher();
+	cout << endl << "Score : " << score->calculeScore() << endl;
+
+
+	if (compteurPouvoir > 0)
+	{
+		compteurPouvoir--;
+	}
+	else
+	{
+		pouvoirRamasse = "rien";
+	}
+
+	plateau->percute(pouvoirRamasse);
+
+	for (int i = 0; i < 2; i++)
+	{
+		if (plateau->getHeros()->getPositionX() == plateau->getPouvoir()[i]->getPositionX() && plateau->getHeros()->getPositionY() == plateau->getPouvoir()[i]->getPositionY())
+		{
+			compteurPouvoir = 3;
+			pouvoirRamasse = plateau->getPouvoir()[i]->getAffichage();
+			plateau->getPouvoir()[i]->setAffichage(" ");
+			score->setNbPouvoir(score->getNbPouvoirRamasse() + 1);
+		}
+	}
+
+
+	gagne = plateau->porteFranchie();
+
+
+
+}
+	cout << "------------------------------" << endl;
+
+	if (gagne == true) {
+		cout << "Vous avez gagne !" << endl;
+	}
+	else {
+		cout << "Vous avez perdu !" << endl;
+	}
+	cout << "Score : " << score->calculeScore() << endl;
+
+	cout << "------------------------------" << endl;
+
+}
+
+// CRASH TEST //
+
 	/*
 	int alleatoire = rand();
 	cout << alleatoire;
@@ -95,179 +170,132 @@ int main()
 		  "  _  _  _  _  _  _  _  _  _  _\n";
 	  */
 
-	
-	
-	/*
-	
-	Heros* superTheo = new Heros("H", 5, 5);
-
-	Monstre* enzo = new Monstre("M");
-
-	Pouvoir* invincible = new Pouvoir("I");
-
-	if (enzo->getPositionX() == superTheo->getPositionX() && enzo->getPositionY() == superTheo->getPositionY())
-	{
-		enzo->setPositionX(enzo->getPositionX() + 1);
-	}
-	if (invincible->getPositionX() == superTheo->getPositionX() && invincible->getPositionY() == superTheo->getPositionY())
-	{
-		invincible->setPositionX(invincible->getPositionX() + 1);
-	}
-
-	while (superTheo->getVie()>0) {
-
-		// ligne du dessus
-		for (int ligne = 0; ligne < 10; ligne++)
-		{
-			cout << "  _";
-			if (ligne == 9)
-			{
-				cout << endl;
-			}
-		}
-
-		//int�rieur du plateau
-		for (int colonneJ = 0; colonneJ < 10; colonneJ++)
-		{
-			cout << "|";
-			for (int ligneJ = 0; ligneJ < 10; ligneJ++)
-			{
-				if (ligneJ == superTheo->getPositionX() && colonneJ == superTheo->getPositionY())
-				{
-					cout << " " << superTheo->getAffichage() << " ";
-				}
-				else if (ligneJ == enzo->getPositionX() && colonneJ == enzo->getPositionY())
-				{
-					cout << " " << enzo->getAffichage() << " ";
-				}
-				else if (ligneJ == invincible->getPositionX() && colonneJ == invincible->getPositionY())
-				{
-					cout << " " << invincible->getAffichage() << " ";
-				}
-				else
-				{
-					cout << "   ";
-				}
-
-			}
-			cout << "|" << endl;
-		}
-
-		//ligne du bas
-		for (int ligne = 0; ligne < 10; ligne++)
-		{
-			cout << "  _";
-			if (ligne == 9)
-			{
-				cout << endl;
-			}
-		}
-
-		cout << "\nNombre de vie : " << superTheo->getVie();
-
-		//déplacement
-
-		//enrgistrement position heros
-		int xH = superTheo->getPositionX();
-		int yH = superTheo->getPositionY();
-
-		//enrgistrement position monstre
-		int xM = enzo->getPositionX();
-		int yM = enzo->getPositionY();
 
 
-		// vérif heros murs   
+	  /*
 
-		while (xH==superTheo->getPositionX() && yH==superTheo->getPositionY())
-		{
-			superTheo->deplacer();
+	  Heros* superTheo = new Heros("H", 5, 5);
 
-			if (superTheo->getPositionX() < 0 || superTheo->getPositionX() > 9 || superTheo->getPositionY() < 0 || superTheo->getPositionY() > 9)
-			{
-				//retour du hero
-				superTheo->setPositionX(xH);
-				superTheo->setPositionY(yH);
-			}
-		}
+	  Monstre* enzo = new Monstre("M");
 
-system("cls");
+	  Pouvoir* invincible = new Pouvoir("I");
 
+	  if (enzo->getPositionX() == superTheo->getPositionX() && enzo->getPositionY() == superTheo->getPositionY())
+	  {
+		  enzo->setPositionX(enzo->getPositionX() + 1);
+	  }
+	  if (invincible->getPositionX() == superTheo->getPositionX() && invincible->getPositionY() == superTheo->getPositionY())
+	  {
+		  invincible->setPositionX(invincible->getPositionX() + 1);
+	  }
 
-		//vérif monstre murs
+	  while (superTheo->getVie()>0) {
 
-		while (xM == enzo->getPositionX() && yM == enzo->getPositionY())
-		{
-			enzo->deplacement();
+		  // ligne du dessus
+		  for (int ligne = 0; ligne < 10; ligne++)
+		  {
+			  cout << "  _";
+			  if (ligne == 9)
+			  {
+				  cout << endl;
+			  }
+		  }
 
-			if (enzo->getPositionX() < 0  || enzo->getPositionX() > 9 || enzo->getPositionY() < 0 || enzo->getPositionY() > 9)
-			{
-				// retour du monstre
-				enzo->setPositionX(xM);
-				enzo->setPositionY(yM);
-			}
-			
-		}
-		system("cls");
+		  //int�rieur du plateau
+		  for (int colonneJ = 0; colonneJ < 10; colonneJ++)
+		  {
+			  cout << "|";
+			  for (int ligneJ = 0; ligneJ < 10; ligneJ++)
+			  {
+				  if (ligneJ == superTheo->getPositionX() && colonneJ == superTheo->getPositionY())
+				  {
+					  cout << " " << superTheo->getAffichage() << " ";
+				  }
+				  else if (ligneJ == enzo->getPositionX() && colonneJ == enzo->getPositionY())
+				  {
+					  cout << " " << enzo->getAffichage() << " ";
+				  }
+				  else if (ligneJ == invincible->getPositionX() && colonneJ == invincible->getPositionY())
+				  {
+					  cout << " " << invincible->getAffichage() << " ";
+				  }
+				  else
+				  {
+					  cout << "   ";
+				  }
 
+			  }
+			  cout << "|" << endl;
+		  }
 
-		//colision monstre et heros
-		if (enzo->getPositionX() == superTheo->getPositionX() && enzo->getPositionY() == superTheo->getPositionY())
-		{
-			superTheo->setVie(superTheo->getVie() - 1);
-		}
-		if (xH == enzo->getPositionX() && yH == enzo->getPositionY())
-		{
-			superTheo->setVie(superTheo->getVie() - 1);
-		}
-	}
+		  //ligne du bas
+		  for (int ligne = 0; ligne < 10; ligne++)
+		  {
+			  cout << "  _";
+			  if (ligne == 9)
+			  {
+				  cout << endl;
+			  }
+		  }
 
-	cout << "Game Over";
-	*/
-	
+		  cout << "\nNombre de vie : " << superTheo->getVie();
 
-Plateau* plateau = new Plateau(1);
+		  //déplacement
 
-bool gagne = false;
+		  //enrgistrement position heros
+		  int xH = superTheo->getPositionX();
+		  int yH = superTheo->getPositionY();
 
-int compteurPouvoir = 0;
-
-string pouvoirRamasse = "rien";
-
-
-
-while (plateau->getHeros()->getVie()>0 && gagne != true)
-{
-	plateau->afficher();
-
-
-	if (compteurPouvoir < 0)
-	{
-		compteurPouvoir--;
-	}
-	else
-	{
-		pouvoirRamasse = "rien";
-	}
-	
-	plateau->percute(pouvoirRamasse);
-
-	for (int i = 0; i < 2; i++)
-	{
-		if (plateau->getHeros()->getPositionX() == plateau->getPouvoir()[i]->getPositionX() && plateau->getHeros()->getPositionY() == plateau->getPouvoir()[i]->getPositionY())
-		{
-			compteurPouvoir = 3;
-			pouvoirRamasse = plateau->getPouvoir()[i]->getAffichage();
-			plateau->getPouvoir()[i]->setAffichage(" ");
-		}
-	}
+		  //enrgistrement position monstre
+		  int xM = enzo->getPositionX();
+		  int yM = enzo->getPositionY();
 
 
-	gagne = plateau->porteFranchie();
+		  // vérif heros murs
 
-}
-cout << "Game Over";
+		  while (xH==superTheo->getPositionX() && yH==superTheo->getPositionY())
+		  {
+			  superTheo->deplacer();
+
+			  if (superTheo->getPositionX() < 0 || superTheo->getPositionX() > 9 || superTheo->getPositionY() < 0 || superTheo->getPositionY() > 9)
+			  {
+				  //retour du hero
+				  superTheo->setPositionX(xH);
+				  superTheo->setPositionY(yH);
+			  }
+		  }
+
+  system("cls");
 
 
+		  //vérif monstre murs
+
+		  while (xM == enzo->getPositionX() && yM == enzo->getPositionY())
+		  {
+			  enzo->deplacement();
+
+			  if (enzo->getPositionX() < 0  || enzo->getPositionX() > 9 || enzo->getPositionY() < 0 || enzo->getPositionY() > 9)
+			  {
+				  // retour du monstre
+				  enzo->setPositionX(xM);
+				  enzo->setPositionY(yM);
+			  }
+
+		  }
+		  system("cls");
 
 
-}
+		  //colision monstre et heros
+		  if (enzo->getPositionX() == superTheo->getPositionX() && enzo->getPositionY() == superTheo->getPositionY())
+		  {
+			  superTheo->setVie(superTheo->getVie() - 1);
+		  }
+		  if (xH == enzo->getPositionX() && yH == enzo->getPositionY())
+		  {
+			  superTheo->setVie(superTheo->getVie() - 1);
+		  }
+	  }
+
+	  cout << "Game Over";
+	  */
+
