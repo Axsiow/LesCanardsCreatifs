@@ -33,5 +33,5 @@ void Score::setNbPouvoir(int nbPouvoir)
 
 int Score::calculeScore()
 {
-	return 1000 - m_nbDeplacement * 25 - m_nbPouvoirRamasse * 50;
+	return 1025 - m_nbDeplacement * 25 - m_nbPouvoirRamasse * 50;
 }

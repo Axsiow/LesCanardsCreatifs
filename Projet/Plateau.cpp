@@ -229,13 +229,13 @@ void Plateau::percute(string pouvoir)
 	while (xH == m_heros->getPositionX() && yH == m_heros->getPositionY())
 	{
 
-		if (pouvoir == "S")
+		if (pouvoir != "S")
 		{
-			m_heros->activerPouvoir();
+			m_heros->deplacer();
 		}
 		else
 		{
-			m_heros->deplacer();
+			m_heros->activerPouvoir();
 		}
 		
 		cout << "Deplacement impossible, recommencer.";
@@ -258,7 +258,8 @@ void Plateau::percute(string pouvoir)
 
 	for (int i = 0; i < nbMonstre; i++)
 	{
-		while (xM[i] == m_monstre[i]->getPositionX() && yM[i] == m_monstre[i]->getPositionY())
+		int compteur = 3;
+		while (xM[i] == m_monstre[i]->getPositionX() && yM[i] == m_monstre[i]->getPositionY() && compteur > 0)
 		{
 			m_monstre[i]->deplacement();
 
@@ -267,6 +268,7 @@ void Plateau::percute(string pouvoir)
 				// retour du monstre
 				m_monstre[i]->setPositionX(xM[i]);
 				m_monstre[i]->setPositionY(yM[i]);
+				compteur = compteur - 1;
 			}
 
 		}
@@ -322,7 +324,7 @@ void Plateau::afficher()
 		nbMonstre = 3;
 	}
 
-	//int�rieur du plateau
+	//interieur du plateau
 	for (int colonneJ = 0; colonneJ < 10; colonneJ++)
 	{
 		cout << "|";
