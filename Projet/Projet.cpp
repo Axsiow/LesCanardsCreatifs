@@ -46,7 +46,8 @@ while (plateau->getHeros()->getVie()>0 && gagne != true)
 	plateau->afficher();
 	cout << endl << "Score : " << score->calculeScore() << endl;
 
-	if (compteurPouvoir < 0)
+
+	if (compteurPouvoir > 0)
 	{
 		compteurPouvoir--;
 	}
