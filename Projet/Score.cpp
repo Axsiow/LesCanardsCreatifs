@@ -33,5 +33,6 @@ void Score::setNbPouvoir(int nbPouvoir)
 
 int Score::calculeScore()
 {
-	return 1025 - m_nbDeplacement * 25 - m_nbPouvoirRamasse * 50;
+	return 1025 - m_nbDeplacement * 25 - m_nbPouvoirRamasse * 50; //Permet de calculer le score en fonction du nombre 
+	//de deplacements du heros et du nombre de pouvoirs ramasses
 }
