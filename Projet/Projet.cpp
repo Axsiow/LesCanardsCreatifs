@@ -9,7 +9,6 @@
 
 	++ Le jeu fonctionne !
 
-	/!\ Probleme au niveau de l'affichage : Mauvaise optimisation du code, A REGLER AVANT 15H /!\
 */
 
 #include "pch.h"
