@@ -1,4 +1,4 @@
-//V.1 Version fonctionelle 
+//V.1 Version fonctionelle (apres 30h de travail)
 /*
 	+ Le plateau s'affiche
 	+ Le heros peut se deplacer
@@ -45,7 +45,13 @@ score->setNbPouvoir(0);
 cout << "------------------------------" << endl;
 cout << "Hero and monsters" << endl << "Fait par LesCanardsCreatifs";
 cout << endl << "------------------------------" << endl << endl;
-cout << "Pour commencer la partie, appuyez sur la touche 'z' !" << endl;
+cout << "Pour commencer la partie, appuyez sur la touche 'z' !" << endl << endl;
+
+cout << "Vous incarnez un heros (represente par le caractere 'H')\nVotre but et de vous enfuir du plateau en atteignant la sortie (represente par le caractere 'E')\ntout en evitant les monstres (caractere 'M') ! " << endl;
+cout << "Vous pouvez vous aider des deux pouvoirs present sur le plateau ! (respectivement 'S' et 'I')" << endl << endl;
+
+cout << "Commandes de deplacement : z, q, s, d" << endl << endl;
+cout << "Bonne chance !";
 while (_getch() != 'z') {
 
 }
@@ -98,8 +104,13 @@ while (plateau->getHeros()->getVie()>0 && gagne != true)
 	}
 	cout << "Score : " << score->calculeScore() << endl;
 
+	cout << "Pour quitter, appuyer sur '0'" << endl;
+
 	cout << "------------------------------" << endl;
 
+	while (_getch() != '0') {
+
+	}
 }
 
 // CRASH TEST //
